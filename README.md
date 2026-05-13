@@ -18,4 +18,4 @@ Baxin Cagal Kevin Eduardo
 Frias Garcia Angel Roberto
 24308060610124@cetis61.edu.mx
 
-<img width="200" height="200" alt="WhatsApp Image 2026-05-13 at 11 38 14 AM" src="https://github.com/user-attachments/assets/a56fe6c6-762d-4e00-a3bd-7cb9d1b0b336" />
+<img width="200" height="250" alt="WhatsApp Image 2026-05-13 at 11 38 14 AM" src="https://github.com/user-attachments/assets/a56fe6c6-762d-4e00-a3bd-7cb9d1b0b336" />
