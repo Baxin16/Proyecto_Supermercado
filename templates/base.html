@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if session.usuario %}
+    <div style="background:#1877f2; padding:10px; color:white; display:flex; justify-content:space-between;">
+        <span>👤 {{ session.usuario }}</span>
+        <a href="/logout" style="color:white;">Cerrar sesión</a>
+    </div>
+{% endif %}
+    <title>Gestor de Tareas</title>
+    <style>
+        body {
+            background: #f0f2f5;
+            font-family: Arial;
+        }
+
+        .container {
+            width: 320px;
+            margin: auto;
+            margin-top: 100px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #166fe5;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: #1877f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
