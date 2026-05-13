@@ -3,6 +3,18 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask import session
 
+
+url = "mongodb+srv://Angel17:171009Ang@clusrob1.xaujcjr.mongodb.net/"
+cliente = MongoClient(url)
+db = cliente["supermercado"]
+coleccion = db["productos"] 
+producto = {
+    "nombre": "Leche",
+    "precio": 32
+}
+coleccion.insert_one(producto)
+print("Conectado y dato guardado")
+
 app = Flask(__name__)
 
 app.secret_key = "panadero_con_el_pan"
@@ -27,7 +39,7 @@ def login():
     })
 
     if user:
-        session["usuario"] = usuario  # 🔥 GUARDAR SESIÓN
+        session["usuario"] = usuario
         return redirect("/tareas")
     else:
         return "Datos incorrectos"
