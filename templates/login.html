@@ -6,11 +6,18 @@
 <form method="POST" action="/login">
     <input type="text" name="usuario" placeholder="Usuario" required>
     <input type="password" name="contraseña" placeholder="Contraseña" required>
-    <button type="submit">Entrar</button>
+    <button type="submit" style="background-color: #ff8484; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px;">
+Entrar
+</button>
 </form>
 
-<a href="/registro">Crear cuenta</a>
-<a href="/recuperar">¿Olvidaste tu contraseña?</a>
+<a href="/registro" style="color: #d40000; text-decoration: none;">
+Crear cuenta
+</a>
+
+<a href="/recuperar" style="color: #d40000; text-decoration: none;">
+¿Olvidaste tu contraseña?
+</a>
 
 {% endblock %}
 
