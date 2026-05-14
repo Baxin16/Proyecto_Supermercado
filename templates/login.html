@@ -1,23 +1,132 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>Iniciar Sesión</h2>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<form method="POST" action="/login">
-    <input type="text" name="usuario" placeholder="Usuario" required>
-    <input type="password" name="contraseña" placeholder="Contraseña" required>
-    <button type="submit" style="background-color: #ff8484; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px;">
-Entrar
-</button>
-</form>
+<style>
+    body {
+        background-color: #fff5f5;
+    }
 
-<a href="/registro" style="color: #d40000; text-decoration: none;">
-Crear cuenta
-</a>
+    .header-login {
+        background-color: #ff8484;
+        color: white;
+        padding: 15px;
+    }
 
-<a href="/recuperar" style="color: #d40000; text-decoration: none;">
-¿Olvidaste tu contraseña?
-</a>
+    .btn-login {
+        background-color: #d40000;
+        border: none;
+    }
+
+    .btn-login:hover {
+        background-color: #aa0000;
+    }
+
+    .link-red {
+        color: #d40000;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .link-red:hover {
+        text-decoration: underline;
+    }
+
+    footer {
+        background-color: #ffb3b3;
+        text-align: center;
+        padding: 10px;
+        margin-top: 40px;
+        font-weight: 500;
+    }
+</style>
+
+<div class="container-fluid p-0">
+
+    <!-- Encabezado -->
+    <div class="row">
+        <div class="col-12 header-login">
+            <h1 class="text-center fw-bold m-0">
+                INICIAR SESIÓN
+            </h1>
+        </div>
+    </div>
+
+    <!-- Contenido -->
+    <main class="container mt-5">
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-sm-10 col-md-8 col-lg-5 p-5 shadow bg-white rounded">
+
+                <h2 class="text-center mb-2">
+                    Bienvenido
+                </h2>
+
+                <p class="text-center text-muted mb-4">
+                    Ingresa tus datos para continuar
+                </p>
+
+                <form method="POST" action="/login">
+
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">
+                            Usuario
+                        </label>
+
+                        <input type="text"
+                            class="form-control"
+                            id="usuario"
+                            name="usuario"
+                            placeholder="Ingresa tu usuario"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="contraseña" class="form-label">
+                            Contraseña
+                        </label>
+
+                        <input type="password"
+                               class="form-control"
+                               id="contraseña"
+                               name="contraseña"
+                               placeholder="Ingresa tu contraseña"
+                               required>
+                    </div>
+
+                    <div class="text-end mb-3">
+                        <a href="/recuperar" class="link-red">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit"
+                                class="btn btn-login text-white w-50">
+                            Entrar
+                        </button>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        ¿No tienes una cuenta?
+                        <a href="/registro" class="link-red">
+                            Crear cuenta
+                        </a>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 NutriApp — Todos los derechos reservados
+    </footer>
+
+</div>
 
 {% endblock %}
-
