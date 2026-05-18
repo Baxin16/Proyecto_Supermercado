@@ -11,3 +11,130 @@
 <a href="/" style="color: #d40000; text-decoration: none;">Volver</a>
 
 {% endblock %}
+
+{% extends 'base.html' %}
+
+{% block titulo %}
+    RECUPERAR CONTRASEÑA - NovaMart
+{% endblock titulo %}
+
+{% block contenido %}
+
+<body>
+
+    <div class="row">
+        <div class="col-12 header">
+            <h1 class="text-center fw-bold m-0">
+                RECUPERAR CONTRASEÑA
+            </h1>
+        </div>
+    </div>
+
+    <main class="container d-flex justify-content-center">
+
+        <div class="card shadow p-5 mt-4"
+             style="max-width: 550px; width: 100%;">
+
+            <h2 class="text-center mb-2">
+                ¿Olvidaste tu contraseña?
+            </h2>
+
+            <p class="text-center text-muted mb-4">
+                Ingresa tu correo electrónico para recuperar tu cuenta
+            </p>
+
+            <form method="POST" action="/recuperar">
+
+                <div class="mb-4">
+
+                    <label for="correo" class="form-label">
+                        Correo electrónico
+                    </label>
+
+                    <input type="email"
+                           class="form-control"
+                           id="correo"
+                           name="correo"
+                           placeholder="Ingresa tu correo"
+                           required>
+
+                </div>
+
+                <div class="alert alert-success text-center">
+                    Se envió un enlace a tu correo
+                </div>
+
+                <div class="mb-4">
+
+                    <label for="codigo" class="form-label">
+                        Código de verificación
+                    </label>
+
+                    <input type="text"
+                           class="form-control"
+                           id="codigo"
+                           name="codigo"
+                           placeholder="Ingresa el código">
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label for="nueva_contraseña" class="form-label">
+                        Nueva contraseña
+                    </label>
+
+                    <input type="password"
+                           class="form-control"
+                           id="nueva_contraseña"
+                           name="nueva_contraseña"
+                           placeholder="Nueva contraseña">
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label for="confirmar_contraseña" class="form-label">
+                        Confirmar contraseña
+                    </label>
+
+                    <input type="password"
+                           class="form-control"
+                           id="confirmar_contraseña"
+                           name="confirmar_contraseña"
+                           placeholder="Confirma tu contraseña">
+
+                </div>
+
+                <div class="text-center mt-4">
+
+                    <button type="submit"
+                            class="btn boton w-50"
+                            style="background: linear-gradient(45deg, #ff2727, #78a3ff);
+                                   border: 2px solid black;">
+
+                        Recuperar
+
+                    </button>
+
+                </div>
+
+                <div class="text-center mt-4">
+
+                    ¿Ya recordaste tu contraseña?
+
+                    <a href="/login" class="link">
+                        Iniciar sesión
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+{% endblock contenido %}
