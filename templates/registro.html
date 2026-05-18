@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
+<<<<<<< HEAD
     REGISTRO - NovaMart
+=======
+    CREAR TU CUENTA - NovaMart
+>>>>>>> 5cc8cb1f18c79125217800c00d95ff7003dd8e1e
 {% endblock titulo %}
 
 {% block contenido %}
@@ -99,6 +103,45 @@
             </div>
 
         </div>
+<<<<<<< HEAD
+=======
+
+        <label class="form-label">Género</label>
+        <div class="d-flex mb-3 justify-content-between">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="genero" id="mujer" name="mujer" required>
+            <label class="form-check-label" for="mujer">Mujer</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="genero" id="hombre" name="hombre" required>
+            <label class="form-check-label" for="hombre">Hombre</label>
+            </div>
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="genero" id="personalizado" name="personalizado" required>
+            <label class="form-check-label" for="personalizado">Personalizado</label>
+            </div>
+        </div>
+
+            <div>
+                <label for="email" class="form-label">Correo Electronico</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Numero de celular o Correo electronico" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña nueva" required>
+            </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn boton w-50">Registrarte</button>
+        </form>
+        </div>
+        <div class="text-center mt-1">
+        <a href="/" class="link">
+            ¿Ya tienes una cuenta?
+        </a>
+        </div>
+>>>>>>> 5cc8cb1f18c79125217800c00d95ff7003dd8e1e
     </main>
 
 </body>

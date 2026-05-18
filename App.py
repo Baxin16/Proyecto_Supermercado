@@ -47,9 +47,13 @@ def login():
     if user:
 
         session["usuario"] = usuario
+<<<<<<< HEAD
 
         return redirect("/tareas")
 
+=======
+        return redirect("/gestor")
+>>>>>>> 5cc8cb1f18c79125217800c00d95ff7003dd8e1e
     else:
 
         return """
@@ -166,17 +170,28 @@ def recuperar():
 
     return render_template("recuperar.html")
 
+<<<<<<< HEAD
 @app.route("/tareas")
 def tareas():
 
+=======
+@app.route("/gestor")
+def gestor():
+>>>>>>> 5cc8cb1f18c79125217800c00d95ff7003dd8e1e
     if "usuario" not in session:
 
         return redirect("/")
 
+<<<<<<< HEAD
     lista_tareas = list(
+=======
+    lista_tareas = list(tareas_db.find({"usuario": session["usuario"]}))
+    return render_template("gestor_productos.html", tareas=lista_tareas)
+>>>>>>> 5cc8cb1f18c79125217800c00d95ff7003dd8e1e
 
         tareas_db.find({
 
+<<<<<<< HEAD
             "usuario": session["usuario"]
 
         })
@@ -191,6 +206,12 @@ def tareas():
         usuario=session["usuario"]
 
     )
+=======
+@app.route("/eliminar/<id>")
+def eliminar(id):
+    tareas_db.delete_one({"_id": ObjectId(id)})
+    return redirect("/gestor")
+>>>>>>> 5cc8cb1f18c79125217800c00d95ff7003dd8e1e
 
 @app.route("/agregar", methods=["POST"])
 def agregar():
@@ -226,7 +247,7 @@ def eliminar(id):
 
     })
 
-    return redirect("/tareas")
+    return redirect("/gestor")
 
 if __name__ == "__main__":
 
