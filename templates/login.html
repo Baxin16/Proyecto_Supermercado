@@ -5,52 +5,22 @@
 {% endblock titulo %}
 
 {% block contenido %}
-    <style>
-        .header-login {
-            background-color: #ff8484;
-            color: white;
-            padding: 15px;S
-        }
-
-        .link {
-            color: #d40000;
-            text-decoration: none;
-            font-weight: 500;
-        }
-    </style>
-</head>
 
 <body>
-
-    <div class="container-fluid p-0">
-
         <div class="row">
-            <div class="col-12 header-login">
-                <h1 class="text-center fw-bold m-0">
-                    INICIAR SESIÓN
-                </h1>
+            <div class="col-12 header">
+                <h1 class="text-center fw-bold m-0">INICIAR SESIÓN</h1>
             </div>
         </div>
 
-        <main class="container mt-5">
-            <div class="row justify-content-center">
-
-                <div class="col-12 col-sm-10 col-md-8 col-lg-5 p-5 shadow bg-white rounded">
-
-                    <h2 class="text-center mb-2">
-                        Bienvenido
-                    </h2>
-
-                    <p class="text-center text-muted mb-4">
-                        Ingresa tus datos para continuar
-                    </p>
+    <main class="container d-flex justify-content-center">
+        <div class="card shadow p-5 mt-4" style="max-width: 550px; width: 100%;">
+            <h2 class="text-center mb-2">Bienvenido</h2>
+                <p class="text-center text-muted mb-4">Ingresa tus datos para continuar</p>
 
                     <form method="POST" action="/login">
-
                         <div class="mb-3">
-                            <label for="usuario" class="form-label">
-                                Usuario
-                            </label>
+                            <label for="usuario" class="form-label">Usuario</label>
 
                             <input type="text"
                                 class="form-control"
@@ -61,9 +31,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="contraseña" class="form-label">
-                                Contraseña
-                            </label>
+                            <label for="contraseña" class="form-label">Contraseña</label>
 
                             <input type="password"
                                 class="form-control"
@@ -75,7 +43,7 @@
 
                         <div class="text-center mt-4">
                             <button type="submit"
-                                    class="btn text-white w-50" style="background: linear-gradient(45deg, #ff2727, #78a3ff); border: 2px solid black; ">
+                                    class="btn boton w-50" style="background: linear-gradient(45deg, #ff2727, #78a3ff); border: 2px solid black; ">
                                 Entrar
                             </button>
                         </div>

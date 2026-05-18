@@ -5,32 +5,18 @@
 {% endblock titulo %}
 
 {% block contenido %}
-    <style>
-        .header-login {
-            background-color: #ff8484;
-            color: white;
-            padding: 15px;S
-        }
-
-        .link {
-            color: #d40000;
-            text-decoration: none;
-            font-weight: 500;
-        }
-    </style>
-</head>
 
 <body>
         <div class="row">
-            <div class="col-12 p-1"  style="background-color: #e0ffbd">
-                <h1 class="text-center fw-bold">REGISTRO PARA NUEVOS USUARIOS</h1>
+            <div class="col-12 header">
+                <h1 class="text-center fw-bold m-0">REGISTRO PARA NUEVOS USUARIOS</h1>
             </div>
         </div>
 
     <main class="container d-flex justify-content-center">
-        <div class="card shadow p-5" style="max-width: 550px; width: 100%;">
-        <h2 class="text-center">Crea una cuenta</h2>
-        <p class="text-center">Es rápido y fácil.</p>
+        <div class="card shadow p-5 mt-4" style="max-width: 550px; width: 100%;">
+            <h2 class="text-center">Crea una cuenta</h2>
+                <p class="text-center">Es rápido y fácil.</p>
 
         <form action="http://127.0.0.1:5000/interfaz" method="get">
             <section class="row">
@@ -178,13 +164,13 @@
                 <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña nueva" required>
             </div>
 
-        <div class="d-grid">
-            <button type="submit" class="btn btn-success">Registrarte</button>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn boton w-50">Registrarte</button>
         </form>
         </div>
-        <p class="text-center">
-        <a href="/">¿Ya tienes una cuenta?</a>
-        </p>
+        <a href="/" class="link">
+            ¿Ya tienes una cuenta?
+        </a>
     </main>
 
 {% endblock %}
