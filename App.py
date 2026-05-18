@@ -40,7 +40,7 @@ def login():
 
     if user:
         session["usuario"] = usuario
-        return redirect("/tareas")
+        return redirect("/gestor")
     else:
         return "Datos incorrectos"
 
@@ -84,19 +84,19 @@ def recuperar():
 
     return render_template("recuperar.html")
 
-@app.route("/tareas")
-def tareas():
+@app.route("/gestor")
+def gestor():
     if "usuario" not in session:
         return redirect("/")
 
     lista_tareas = list(tareas_db.find({"usuario": session["usuario"]}))
-    return render_template("tareas.html", tareas=lista_tareas)
+    return render_template("gestor_productos.html", tareas=lista_tareas)
 
 
 @app.route("/eliminar/<id>")
 def eliminar(id):
     tareas_db.delete_one({"_id": ObjectId(id)})
-    return redirect("/tareas")
+    return redirect("/gestor")
 
 @app.route("/agregar", methods=["POST"])
 def agregar():
@@ -110,7 +110,7 @@ def agregar():
         "tarea": tarea
     })
 
-    return redirect("/tareas")
+    return redirect("/gestor")
 
 if __name__ == "__main__":
     app.run(debug=True)
