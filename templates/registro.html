@@ -1,177 +1,106 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    INICIO DE SESION - NovaMart
+    REGISTRO - NovaMart
 {% endblock titulo %}
 
 {% block contenido %}
 
 <body>
-        <div class="row">
-            <div class="col-12 header">
-                <h1 class="text-center fw-bold m-0">REGISTRO PARA NUEVOS USUARIOS</h1>
-            </div>
+
+    <div class="row">
+        <div class="col-12 header">
+            <h1 class="text-center fw-bold m-0">REGISTRO PARA NUEVOS USUARIOS</h1>
         </div>
+    </div>
 
     <main class="container d-flex justify-content-center">
         <div class="card shadow p-5 mt-4" style="max-width: 550px; width: 100%;">
+
             <h2 class="text-center">Crea una cuenta</h2>
-                <p class="text-center">Es rápido y fácil.</p>
+            <p class="text-center">Es rápido y fácil.</p>
 
-        <form action="http://127.0.0.1:5000/interfaz" method="get">
-            <section class="row">
-                <div class="col-6 mb-3">
-                    <label for="nombre" class="form-label">NOMBRES</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" required>
+            <form action="/registro" method="POST">
+
+                <section class="row">
+                    <div class="col-6 mb-3">
+                        <label for="nombre" class="form-label">NOMBRES</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="apellidos" class="form-label">APELLIDOS</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+                    </div>
+                </section>
+
+                <label class="form-label">Fecha de nacimiento</label>
+                <div class="row mb-3">
+                    <div class="col-4">
+                        <select class="form-select" name="dia" required>
+                            <option value="">Día</option>
+                            {% for i in range(1, 32) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select class="form-select" name="mes" required>
+                            <option value="">Mes</option>
+                            <option>Enero</option><option>Febrero</option><option>Marzo</option><option>Abril</option>
+                            <option>Mayo</option><option>Junio</option><option>Julio</option><option>Agosto</option>
+                            <option>Septiembre</option><option>Octubre</option><option>Noviembre</option><option>Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <select class="form-select" name="año" required>
+                            <option value="">Año</option>
+                            {% for i in range(1980, 2025) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                 </div>
-                <div class="col-6 mb-3">
-                    <label for="apellidos" class="form-label">APELLIDOS</label>
-                    <input type="text" class="form-control" id="apellidos" placeholder="Apelidos" name="apellidos" required>
+
+                <label class="form-label">Género</label>
+                <div class="d-flex mb-3 justify-content-between">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genero" value="Mujer" required>
+                        <label class="form-check-label">Mujer</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genero" value="Hombre">
+                        <label class="form-check-label">Hombre</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="genero" value="Personalizado">
+                        <label class="form-check-label">Personalizado</label>
+                    </div>
                 </div>
-            </section>
 
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario o Correo Electrónico</label>
+                    <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario o correo" required>
+                </div>
 
-        <label class="form-label">Fecha de nacimiento</label>
-        <div class="row mb-3">
-            <div class="col-4">
-            <select class="form-select" required>
-                <option>dia</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>                
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>                
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-                <option>31</option>
-            </select>
+                <div class="mb-3">
+                    <label for="contraseña" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña nueva" required>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn boton w-50">Registrarte</button>
+                </div>
+
+            </form>
+
+            <!-- ENLACE A LOGIN -->
+            <div class="text-center mt-4">
+                <a href="/" class="link">¿Ya tienes una cuenta?</a>
             </div>
-            <div class="col-4">
-            <select class="form-select" required>
-                <option>mes</option>
-                <option>Enero</option>
-                <option>Febrero</option>
-                <option>Marzo</option>
-                <option>Abril</option>
-                <option>Mayo</option>
-                <option>Junio</option>
-                <option>Julio</option>
-                <option>Agosto</option>
-                <option>Septiembre</option>
-                <option>Octubre</option>
-                <option>Noviembre</option>
-                <option>Diciembre</option>
-            </select>
-            </div>
-            <div class="col-4">
-            <select class="form-select" required>
-                <option>año</option>
-                <option>1980</option>
-                <option>1981</option>
-                <option>1982</option>
-                <option>1983</option>
-                <option>1984</option>
-                <option>1985</option>
-                <option>1986</option>
-                <option>1987</option>
-                <option>1988</option>
-                <option>1989</option>
-                <option>1990</option>
-                <option>1991</option>
-                <option>1992</option>
-                <option>1993</option>
-                <option>1994</option>
-                <option>1995</option>
-                <option>1996</option>
-                <option>1997</option>
-                <option>1998</option>
-                <option>1999</option>
-                <option>2000</option>
-                <option>2001</option>
-                <option>2002</option>
-                <option>2003</option>
-                <option>2004</option>
-                <option>2005</option>
-                <option>2006</option>
-                <option>2007</option>
-                <option>2008</option>
-                <option>2009</option>
-                <option>2010</option>
-                <option>2011</option>
-                <option>2012</option>
-                <option>2013</option>
-                <option>2014</option>
-                <option>2015</option>
-                <option>2016</option>
-                <option>2017</option>
-                <option>2018</option>
-                <option>2019</option>
-                <option>2020</option>
-                <option>2021</option>
-                <option>2022</option>
-                <option>2023</option>
-                <option>2024</option>
-            </select>
-            </div>
+
         </div>
-
-        <label class="form-label">Género</label>
-        <div class="d-flex mb-3 justify-content-between">
-            <div class="form-check">
-            <input class="form-check-input" type="radio" name="genero" id="mujer" name="mujer" required>
-            <label class="form-check-label" for="mujer">Mujer</label>
-            </div>
-            <div class="form-check">
-            <input class="form-check-input" type="radio" name="genero" id="hombre" name="hombre" required>
-            <label class="form-check-label" for="hombre">Hombre</label>
-            </div>
-            <div class="form-check">
-            <input class="form-check-input" type="radio" name="genero" id="personalizado" name="personalizado" required>
-            <label class="form-check-label" for="personalizado">Personalizado</label>
-            </div>
-        </div>
-
-            <div>
-                <label for="email" class="form-label">Correo Electronico</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Numero de celular o Correo electronico" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña nueva" required>
-            </div>
-
-        <div class="text-center mt-4">
-            <button type="submit" class="btn boton w-50">Registrarte</button>
-        </form>
-        </div>
-        <a href="/" class="link">
-            ¿Ya tienes una cuenta?
-        </a>
     </main>
 
-{% endblock %}
+</body>
 
+{% endblock %}

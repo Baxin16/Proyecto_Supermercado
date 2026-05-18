@@ -1,17 +1,3 @@
-{% extends "base.html" %}
-{% block content %}
-
-<h2>Recuperar contraseña</h2>
-
-<form method="POST">
-    <input type="text" name="usuario" placeholder="Usuario" required>
-    <button type="submit" style="background-color: #ff8484; color: #ffffff; border: none; padding: 10px 20px; border-radius: 5px;" >Recuperar</button>
-</form>
-
-<a href="/" style="color: #d40000; text-decoration: none;">Volver</a>
-
-{% endblock %}
-
 {% extends 'base.html' %}
 
 {% block titulo %}
@@ -33,7 +19,7 @@
     <main class="container d-flex justify-content-center">
 
         <div class="card shadow p-5 mt-4"
-             style="max-width: 550px; width: 100%;">
+            style="max-width: 550px; width: 100%;">
 
             <h2 class="text-center mb-2">
                 ¿Olvidaste tu contraseña?
@@ -52,11 +38,11 @@
                     </label>
 
                     <input type="email"
-                           class="form-control"
-                           id="correo"
-                           name="correo"
-                           placeholder="Ingresa tu correo"
-                           required>
+                        class="form-control"
+                        id="correo"
+                        name="correo"
+                        placeholder="Ingresa tu correo"
+                        required>
 
                 </div>
 
@@ -71,10 +57,10 @@
                     </label>
 
                     <input type="text"
-                           class="form-control"
-                           id="codigo"
-                           name="codigo"
-                           placeholder="Ingresa el código">
+                        class="form-control"
+                        id="codigo"
+                        name="codigo"
+                        placeholder="Ingresa el código">
 
                 </div>
 
@@ -85,10 +71,10 @@
                     </label>
 
                     <input type="password"
-                           class="form-control"
-                           id="nueva_contraseña"
-                           name="nueva_contraseña"
-                           placeholder="Nueva contraseña">
+                        class="form-control"
+                        id="nueva_contraseña"
+                        name="nueva_contraseña"
+                        placeholder="Nueva contraseña">
 
                 </div>
 
@@ -99,10 +85,10 @@
                     </label>
 
                     <input type="password"
-                           class="form-control"
-                           id="confirmar_contraseña"
-                           name="confirmar_contraseña"
-                           placeholder="Confirma tu contraseña">
+                        class="form-control"
+                        id="confirmar_contraseña"
+                        name="confirmar_contraseña"
+                        placeholder="Confirma tu contraseña">
 
                 </div>
 
@@ -111,7 +97,7 @@
                     <button type="submit"
                             class="btn boton w-50"
                             style="background: linear-gradient(45deg, #ff2727, #78a3ff);
-                                   border: 2px solid black;">
+                                border: 2px solid black;">
 
                         Recuperar
 
