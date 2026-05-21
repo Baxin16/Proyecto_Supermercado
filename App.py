@@ -135,7 +135,7 @@ def gestor():
         })
     )
     return render_template(
-        "tareas.html",
+        "gestion_productos.html",
         tareas=lista_tareas,
         usuario=session["usuario"]
     )
