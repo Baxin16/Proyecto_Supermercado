@@ -5,12 +5,16 @@ from flask_mail import Mail, Message
 import random
 
 app = Flask(__name__)
-mail = Mail(app)
+
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'tu_correo@gmail.com'
-app.config['MAIL_PASSWORD'] = 'tu_password_de_aplicacion'
+app.config['MAIL_USERNAME'] = '24308060610124@cetis61.edu.mx'
+app.config['MAIL_PASSWORD'] = 'tvrxihgxczmpauez'
+app.config['MAIL_DEFAULT_SENDER'] = '24308060610124@cetis61.edu.mx'
+
+mail = Mail(app)
+
 app.secret_key = "panadero_con_el_pan"
 
 url = "mongodb+srv://Angel17:171009Ang@clusrob1.xaujcjr.mongodb.net/?appName=ClusRob1"
@@ -152,8 +156,8 @@ Tu código de recuperación es:
 
     return render_template("recuperar.html")
 
-@app.route("/verificar_codigo", methods=["GET", "POST"])
-def verificar_codigo():
+@app.route("/verificar", methods=["GET", "POST"])
+def verificar():
 
     if request.method == "POST":
 
@@ -173,14 +177,14 @@ def verificar_codigo():
                 </a>
             """
 
-    return render_template("verificar_codigo.html")
+    return render_template("verificar.html")
 
-@app.route("/nueva_password", methods=["GET", "POST"])
+@app.route("/nueva_contraseña", methods=["GET", "POST"])
 def nueva_password():
 
     if request.method == "POST":
 
-        nueva_password = request.form["nueva_password"]
+        nueva_contraseña = request.form["nueva_contraseña"]
 
         usuarios.update_one(
             {
@@ -204,7 +208,7 @@ def nueva_password():
             </a>
         """
 
-    return render_template("nueva_password.html")
+    return render_template("nueva_contraseña.html")
 
 
 @app.route("/gestor")
