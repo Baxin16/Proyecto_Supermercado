@@ -1,25 +1,65 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    CREA TU CUENTA - NovaMart
+    VERIFICAR CÓDIGO - NovaMart
 {% endblock titulo %}
 
 {% block contenido %}
 
-<h2>Verificar código</h2>
+<div class="row">
+    <div class="col-12 header">
+        <h1 class="text-center fw-bold m-0">
+            VERIFICAR CÓDIGO
+        </h1>
+    </div>
+</div>
 
-<form method="POST">
+<main class="container d-flex justify-content-center">
+    <div class="card shadow p-5 mt-4"
+        style="max-width: 550px; width: 100%;">
 
-    <input
-        type="text"
-        name="codigo"
-        placeholder="Código de 6 dígitos"
-        required
-    >
+        <h2 class="text-center mb-2">
+            Ingresa el código
+        </h2>
 
-    <button type="submit">
-        Verificar
-    </button>
+        <p class="text-center text-muted mb-4">
+            Escribe el código de 6 dígitos enviado a tu correo electrónico
+        </p>
 
-</form>
+        <form method="POST">
+
+            <div class="mb-4">
+                <label for="codigo" class="form-label">
+                    Código de verificación
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    id="codigo"
+                    name="codigo"
+                    placeholder="Ingresa el código de 6 dígitos"
+                    maxlength="6"
+                    required
+                >
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit"
+                        class="btn boton w-50">
+                    Verificar
+                </button>
+            </div>
+
+            <div class="text-center mt-4">
+                ¿No recibiste el código?
+                <a href="/recuperar" class="link">
+                    Reenviar código
+                </a>
+            </div>
+
+        </form>
+    </div>
+</main>
+
 {% endblock %}

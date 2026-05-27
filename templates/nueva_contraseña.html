@@ -1,25 +1,64 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    CREA TU CUENTA - NovaMart
+    NUEVA CONTRASEÑA - NovaMart
 {% endblock titulo %}
 
 {% block contenido %}
 
-<h2>Nueva contraseña</h2>
+<div class="row">
+    <div class="col-12 header">
+        <h1 class="text-center fw-bold m-0">
+            NUEVA CONTRASEÑA
+        </h1>
+    </div>
+</div>
 
-<form method="POST">
+<main class="container d-flex justify-content-center">
+    <div class="card shadow p-5 mt-4"
+        style="max-width: 550px; width: 100%;">
 
-    <input
-        type="Contraseña"
-        name="nueva_contraseña"
-        placeholder="Nueva contraseña"
-        required
-    >
+        <h2 class="text-center mb-2">
+            Restablece tu contraseña
+        </h2>
 
-    <button type="submit">
-        Guardar contraseña
-    </button>
+        <p class="text-center text-muted mb-4">
+            Ingresa una nueva contraseña para tu cuenta
+        </p>
 
-</form>
+        <form method="POST">
+
+            <div class="mb-4">
+                <label for="nueva_contraseña" class="form-label">
+                    Nueva contraseña
+                </label>
+
+                <input
+                    type="password"
+                    class="form-control"
+                    id="nueva_contraseña"
+                    name="nueva_contraseña"
+                    placeholder="Ingresa tu nueva contraseña"
+                    required
+                >
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit"
+                        class="btn boton w-50">
+                    Guardar contraseña
+                </button>
+            </div>
+
+            <div class="text-center mt-4">
+                ¿Ya recordaste tu contraseña?
+                <a href="/" class="link">
+                    Iniciar sesión
+                </a>
+            </div>
+
+        </form>
+    </div>
+</main>
+
 {% endblock %}
