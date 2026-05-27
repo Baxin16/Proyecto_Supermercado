@@ -165,14 +165,14 @@ def verificar():
 
         if codigo == session.get("codigo_recuperacion"):
 
-            return redirect("/nueva_password")
+            return redirect("/nueva_contraseña")
 
         else:
 
             return """
                 <h2>Código incorrecto</h2>
 
-                <a href="/verificar_codigo">
+                <a href="/verificar">
                     Intentar otra vez
                 </a>
             """
@@ -180,7 +180,7 @@ def verificar():
     return render_template("verificar.html")
 
 @app.route("/nueva_contraseña", methods=["GET", "POST"])
-def nueva_password():
+def nueva_contraseña():
 
     if request.method == "POST":
 
@@ -192,7 +192,7 @@ def nueva_password():
             },
             {
                 "$set": {
-                    "contraseña": nueva_password
+                    "contraseña": nueva_contraseña
                 }
             }
         )
