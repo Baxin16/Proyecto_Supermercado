@@ -1,368 +1,132 @@
 {% extends 'base.html' %}
 
-{% block titulo %}
-    INICIO - NovaMart
-{% endblock titulo %}
+{% block titulo %}INICIO - NovaMart{% endblock titulo %}
 
 {% block content %}
 
 <style>
-{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-body{
-background:#f5f6fb;
-overflow-x:hidden;
-}
-.sidebar{
-width:260px;
-height:100vh;
-background:white;
-position:fixed;
-left:0;
-top:0;
-border-right:1px solid #ececec;
-z-index:1000;
-}
-.logo{
-height:85px;
-background:linear-gradient(90deg,#ff4d79,#8f7dff);
-display:flex;
-align-items:center;
-padding-left:30px;
-color:white;
-font-size:30px;
-font-weight:700;
-}
-.menu{
-padding:20px;
-}
-.menu a{
-text-decoration:none;
-color:#5f6480;
-display:flex;
-align-items:center;
-gap:15px;
-padding:16px 18px;
-border-radius:15px;
-margin-bottom:10px;
-transition:.3s;
-font-weight:500;
-}
-.menu a:hover,
-.menu .active{
-background:#f7efff;
-color:#ff4d79;
-}
-.main{
-margin-left:260px;
-padding:30px;
-}
-.topbar{
-background:linear-gradient(90deg,#ff4d79,#8f7dff);
-padding:20px 30px;
-border-radius:25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:30px;
-flex-wrap:wrap;
-gap:20px;
-}
-.search-box{
-background:white;
-width:400px;
-border-radius:50px;
-padding:12px 20px;
-display:flex;
-align-items:center;
-gap:10px;
-}
-.search-box input{
-border:none;
-outline:none;
-width:100%;
-background:transparent;
-}
-.admin{
-color:white;
-display:flex;
-align-items:center;
-gap:15px;
-}
-.admin img{
-width:45px;
-height:45px;
-border-radius:50%;
-}
-.title-area h1{
-font-size:40px;
-font-weight:700;
-color:#1f2340;
-}
-.title-area p{
-color:#7a7f9b;
-}
-.btn-add{
-background:linear-gradient(90deg,#ff4d79,#8f7dff);
-border:none;
-border-radius:15px;
-padding:14px 25px;
-color:white;
-font-weight:600;
-}
-.card{
-border:none;
-border-radius:25px;
-overflow:hidden;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
-transition:.3s;
-height:100%;
-}
-.card:hover{
-transform:translateY(-5px);
-}
-.card img{
-height:240px;
-object-fit:cover;
-padding:15px;
-background:#f8f8fc;
-}
-.card-title{
-font-weight:700;
-}
-.precio{
-font-size:24px;
-font-weight:700;
-color:#ff4d79;
-}
-.list-group-item{
-border:none;
-}
-.card-link{
-text-decoration:none;
-font-weight:600;
-color:#8f7dff;
-cursor:pointer;
-}
-.modal-content{
-border-radius:25px;
-border:none;
-}
-.form-control{
-height:50px;
-border-radius:15px;
-}
-@media(max-width:992px){
-.sidebar{
-width:100%;
-height:auto;
-position:relative;
-}
-.main{
-margin-left:0;
-}
-.search-box{
-width:100%;
-}
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#f5f6fb;overflow-x:hidden;}
+.sidebar{width:260px;height:100vh;background:white;position:fixed;left:0;top:0;border-right:1px solid #ececec;z-index:1000;}
+.logo{height:85px;background:linear-gradient(90deg,#ff4d79,#8f7dff);display:flex;align-items:center;padding-left:30px;color:white;font-size:30px;font-weight:700;}
+.menu{padding:20px;}
+.menu a{text-decoration:none;color:#5f6480;display:flex;align-items:center;gap:15px;padding:16px 18px;border-radius:15px;margin-bottom:10px;transition:.3s;font-weight:500;}
+.menu a:hover,.menu .active{background:#f7efff;color:#ff4d79;}
+.main{margin-left:260px;padding:30px;}
+.topbar{background:linear-gradient(90deg,#ff4d79,#8f7dff);padding:20px 30px;border-radius:25px;display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;flex-wrap:wrap;gap:20px;}
+.search-box{background:white;width:400px;border-radius:50px;padding:12px 20px;display:flex;align-items:center;gap:10px;}
+.search-box input{border:none;outline:none;width:100%;background:transparent;}
+.admin{color:white;display:flex;align-items:center;gap:15px;}
+.admin img{width:45px;height:45px;border-radius:50%;}
+.title-area h1{font-size:40px;font-weight:700;color:#1f2340;}
+.title-area p{color:#7a7f9b;}
+.btn-add{background:linear-gradient(90deg,#ff4d79,#8f7dff);border:none;border-radius:15px;padding:14px 25px;color:white;font-weight:600;}
+.card{border:none;border-radius:25px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.05);transition:.3s;height:100%;}
+.card:hover{transform:translateY(-5px);}
+.card img{height:240px;object-fit:cover;padding:15px;background:#f8f8fc;}
+.card-title{font-weight:700;}
+.precio{font-size:24px;font-weight:700;color:#ff4d79;}
+.list-group-item{border:none;}
+.card-link{text-decoration:none;font-weight:600;color:#8f7dff;cursor:pointer;}
+.modal-content{border-radius:25px;border:none;}
+.form-control{height:50px;border-radius:15px;}
+@media(max-width:992px){.sidebar{width:100%;height:auto;position:relative;}.main{margin-left:0;}.search-box{width:100%;}}
 </style>
-</head>
-<body>
+
 <div class="sidebar">
-<div class="logo">
-<i class="bi bi-box-seam me-2"></i>
-NovaMart
-</div>
+<div class="logo">NovaMart</div>
 <div class="menu">
-<a href="#"><i class="bi bi-house"></i>Inicio</a>
-<a href="#" class="active"><i class="bi bi-bag"></i>Productos</a>
-<a href="#"><i class="bi bi-grid"></i>Categorías</a>
-<a href="#"><i class="bi bi-boxes"></i>Inventario</a>
-<a href="#"><i class="bi bi-graph-up"></i>Ventas</a>
-<a href="#"><i class="bi bi-gear"></i>Configuración</a>
+    <a href="#"><i class="bi bi-house"></i>Inicio</a>
+    <a href="#" class="active"><i class="bi bi-bag"></i>Productos</a>
+    <a href="#"><i class="bi bi-grid"></i>Categorías</a>
+    <a href="#"><i class="bi bi-boxes"></i>Inventario</a>
+    <a href="#"><i class="bi bi-graph-up"></i>Ventas</a>
+    <a href="#"><i class="bi bi-gear"></i>Configuración</a>
 </div>
 </div>
+
 <div class="main">
 <div class="topbar">
-<div class="search-box">
-<i class="bi bi-search"></i>
-<input type="text" id="busqueda" placeholder="Buscar productos...">
+    <div class="search-box">
+    <i class="bi bi-search"></i>
+    <input type="text" id="busqueda" placeholder="Buscar productos...">
+    </div>
+    <div class="admin">
+    <i class="bi bi-bell fs-4"></i>
+    <div class="d-flex align-items-center gap-2">
+        <img src="https://i.imgur.com/6VBx3io.png">
+        <div>
+        <div class="fw-bold">Admin</div>
+        <small>Administrador</small>
+        </div>
+    </div>
+    </div>
 </div>
-<div class="admin">
-<i class="bi bi-bell fs-4"></i>
-<div class="d-flex align-items-center gap-2">
-<img src="https://i.imgur.com/6VBx3io.png">
-<div>
-<div class="fw-bold">Admin</div>
-<small>Administrador</small>
-</div>
-</div>
-</div>
-</div>
+
 <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
-<div class="title-area">
-<h1>Productos</h1>
-<p>Gestiona y consulta todos los productos</p>
+    <div class="title-area">
+    <h1>Productos</h1>
+    <p>Gestiona y consulta todos los productos</p>
+    </div>
+    <button class="btn-add" data-bs-toggle="modal" data-bs-target="#modalProducto"><i class="bi bi-plus-lg"></i> Nuevo producto</button>
 </div>
-<button class="btn-add" data-bs-toggle="modal" data-bs-target="#modalProducto">
-<i class="bi bi-plus-lg"></i>
-Nuevo producto
-</button>
-</div>
+
 <div class="row g-4" id="contenedorProductos"></div>
 </div>
+
 <div class="modal fade" id="modalProducto">
 <div class="modal-dialog">
-<div class="modal-content p-3">
-<div class="modal-header border-0">
-<h4 class="fw-bold">Producto</h4>
-<button class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-<div class="modal-body">
-<input type="hidden" id="indice">
-<div class="mb-3">
-<label>Nombre</label>
-<input type="text" id="nombre" class="form-control">
-</div>
-<div class="mb-3">
-<label>Precio</label>
-<input type="number" id="precio" class="form-control">
-</div>
-<div class="mb-3">
-<label>Stock</label>
-<input type="number" id="stock" class="form-control">
-</div>
-<div class="mb-3">
-<label>Imagen URL</label>
-<input type="text" id="imagen" class="form-control">
+    <div class="modal-content p-3">
+    <div class="modal-header border-0">
+        <h4 class="fw-bold">Producto</h4>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" id="indice">
+        <div class="mb-3"><label>Nombre</label><input type="text" id="nombre" class="form-control"></div>
+        <div class="mb-3"><label>Precio</label><input type="number" id="precio" class="form-control"></div>
+        <div class="mb-3"><label>Stock</label><input type="number" id="stock" class="form-control"></div>
+        <div class="mb-3"><label>Imagen URL</label><input type="text" id="imagen" class="form-control"></div>
+    </div>
+    <div class="modal-footer border-0">
+        <button class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn-add" onclick="guardarProducto()">Guardar</button>
+    </div>
+    </div>
 </div>
 </div>
-<div class="modal-footer border-0">
-<button class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
-<button class="btn-add" onclick="guardarProducto()">Guardar</button>
-</div>
-</div>
-</div>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-let productos=[
-{
-nombre:'Audífonos RGB Pro',
-precio:599,
-stock:14,
-imagen:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop'
-},
-{
-nombre:'Mouse Gamer X7',
-precio:399,
-stock:3,
-imagen:'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=1200&auto=format&fit=crop'
-},
-{
-nombre:'Monitor Full HD',
-precio:2199,
-stock:7,
-imagen:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=1200&auto=format&fit=crop'
-}
-]
-function mostrarProductos(lista=productos){
-let contenedor=document.getElementById('contenedorProductos')
-contenedor.innerHTML=''
-for(let i=0;i<lista.length;i++){
-contenedor.innerHTML+=`
-<div class="col-xl-3 col-lg-4 col-md-6">
-<div class="card" style="width:100%;">
-<img src="${lista[i].imagen}" class="card-img-top" alt="producto">
-<div class="card-body">
-<h5 class="card-title">${lista[i].nombre}</h5>
-<p class="card-text">Producto disponible en almacén.</p>
-</div>
-<ul class="list-group list-group-flush">
-<li class="list-group-item precio">$${lista[i].precio} MXN</li>
-<li class="list-group-item">Stock: ${lista[i].stock}</li>
-<li class="list-group-item">ID: 00${i+1}</li>
-</ul>
-<div class="card-body d-flex justify-content-between">
-<a class="card-link" onclick="editarProducto(${i})">
-<i class="bi bi-pencil-square"></i>
-Editar
-</a>
-<a class="card-link text-danger" onclick="eliminarProducto(${i})">
-<i class="bi bi-trash"></i>
-Eliminar
-</a>
-</div>
-</div>
-</div>
-`
-}
-}
-mostrarProductos()
-function guardarProducto(){
-let nombre=document.getElementById('nombre').value
-let precio=document.getElementById('precio').value
-let stock=document.getElementById('stock').value
-let imagen=document.getElementById('imagen').value
-let indice=document.getElementById('indice').value
-if(nombre==''||precio==''||stock==''||imagen==''){
-alert('Completa todos los campos')
-return
-}
-let producto={
-nombre:nombre,
-precio:precio,
-stock:stock,
-imagen:imagen
-}
-if(indice===''){
-productos.push(producto)
-}else{
-productos[indice]=producto
-}
-mostrarProductos()
-limpiarFormulario()
-document.querySelector('.btn-close').click()
-}
-function editarProducto(i){
-document.getElementById('indice').value=i
-let producto=productos[i]
-document.getElementById('nombre').value=producto.nombre
-document.getElementById('precio').value=producto.precio
-document.getElementById('stock').value=producto.stock
-document.getElementById('imagen').value=producto.imagen
-new bootstrap.Modal(document.getElementById('modalProducto')).show()
-}
-function eliminarProducto(i){
-let confirmar=confirm('¿Deseas eliminar este producto?')
-if(confirmar){
-productos.splice(i,1)
-mostrarProductos()
-}
-}
-function limpiarFormulario(){
-document.getElementById('indice').value=''
-document.getElementById('nombre').value=''
-document.getElementById('precio').value=''
-document.getElementById('stock').value=''
-document.getElementById('imagen').value=''
-}
-document.getElementById('busqueda').addEventListener('keyup',function(){
-let texto=this.value.toLowerCase()
-let resultado=[]
-for(let i=0;i<productos.length;i++){
-if(productos[i].nombre.toLowerCase().includes(texto)){
-resultado.push(productos[i])
-}
-}
-mostrarProductos(resultado)
-})
-</script>
-</body>
-</html>
+let productos=[{nombre:'Audífonos RGB Pro',precio:599,stock:14,imagen:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop'},
+            {nombre:'Mouse Gamer X7',precio:399,stock:3,imagen:'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=1200&auto=format&fit=crop'},
+            {nombre:'Monitor Full HD',precio:2199,stock:7,imagen:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=1200&auto=format&fit=crop'}];
 
-{% endblock %}
+function mostrarProductos(lista=productos){
+let contenedor=document.getElementById('contenedorProductos'); contenedor.innerHTML='';
+lista.forEach((p,i)=>{
+    contenedor.innerHTML+=`<div class="col-xl-3 col-lg-4 col-md-6">
+    <div class="card">
+        <img src="${p.imagen}" class="card-img-top">
+        <div class="card-body"><h5 class="card-title">${p.nombre}</h5><p class="card-text">Producto disponible en almacén.</p></div>
+        <ul class="list-group list-group-flush"><li class="list-group-item precio">$${p.precio} MXN</li><li class="list-group-item">Stock: ${p.stock}</li><li class="list-group-item">ID: 00${i+1}</li></ul>
+        <div class="card-body d-flex justify-content-between">
+        <a class="card-link" onclick="editarProducto(${i})"><i class="bi bi-pencil-square"></i> Editar</a>
+        <a class="card-link text-danger" onclick="eliminarProducto(${i})"><i class="bi bi-trash"></i> Eliminar</a>
+        </div>
+    </div>
+    </div>`;
+});
+}
+
+function guardarProducto(){
+    let nombre=document.getElementById('nombre').value, precio=document.getElementById('precio').value, stock=document.getElementById('stock').value, imagen=document.getElementById('imagen').value, indice=document.getElementById('indice').value;
+    if(!nombre||!precio||!stock||!imagen){alert('Completa todos los campos'); return;}
+    let producto={nombre,precio,stock,imagen};
+    if(indice===''){productos.push(producto);} else{productos[indice]=producto;}
+    mostrarProductos(); limpiarFormulario(); document.querySelector('.btn-close').click();
+}
+
+function editarProducto(i){
+    document.getElementById('indice').value=i;
+    let p=productos[i]; document

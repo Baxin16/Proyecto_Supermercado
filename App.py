@@ -80,12 +80,10 @@ def registro():
         dia = request.form["dia"]
         mes = request.form["mes"]
         año = request.form["año"]
+        usuario = request.form["usuario"]
         genero = request.form["genero"]
-
         correo = request.form["correo"]
-
         contraseña = request.form["contraseña"]
-
         usuario_existente = usuarios.find_one({
             "correo": correo
         })
@@ -95,17 +93,15 @@ def registro():
             return "Ese correo ya existe"
 
         usuarios.insert_one({
-
-            "nombre": nombre,
-            "apellidos": apellidos,
-            "dia": dia,
-            "mes": mes,
-            "año": año,
-            "genero": genero,
-
-            "correo": correo,
-
-            "contraseña": contraseña
+    "usuario": usuario,
+    "nombre": nombre,
+    "apellidos": apellidos,
+    "dia": dia,
+    "mes": mes,
+    "año": año,
+    "genero": genero,
+    "correo": correo,
+    "contraseña": contraseña
         })
 
         return redirect("/")
