@@ -15,7 +15,7 @@ app.config['MAIL_DEFAULT_SENDER'] = '24308060610124@cetis61.edu.mx'
 
 mail = Mail(app)
 
-app.secret_key = "panadero_con_el_pan"
+app.secret_key = "20_cosas_que_no_sabias_de_las_empanadas"
 
 url = "mongodb+srv://Angel17:171009Ang@clusrob1.xaujcjr.mongodb.net/?appName=ClusRob1"
 
