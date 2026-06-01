@@ -53,7 +53,7 @@ def login():
     })
     if user:
         session["usuario"] = usuario
-        return redirect("/gestor")
+        return redirect("/gestion_productos")
 
     else:
         return """
@@ -207,8 +207,8 @@ def nueva_contraseña():
     return render_template("nueva_contraseña.html")
 
 
-@app.route("/gestor")
-def gestor():
+@app.route("/gestion_productos")
+def gestion_productos():
     if "usuario" not in session:
         return redirect("/")
     lista_tareas = list(
@@ -228,13 +228,12 @@ def agregar():
     if "usuario" not in session:
         return redirect("/")
     tarea = request.form["tarea"]
-
     if tarea:
         tareas_db.insert_one({
             "usuario": session["usuario"],
             "tarea": tarea
         })
-    return redirect("/gestor")
+    return redirect("/gestion_productos")
 
 
 @app.route("/eliminar/<id>")
@@ -244,7 +243,7 @@ def eliminar(id):
     tareas_db.delete_one({
         "_id": ObjectId(id)
     })
-    return redirect("/gestor")
+    return redirect("/gestion_productos")
 
 
 if __name__ == "__main__":
