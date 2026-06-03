@@ -66,6 +66,13 @@
                 </div>
 
                 <div class="mb-3">
+                    <label>Categoria</label>
+                    <input type="text"
+                        id="categoria"
+                        class="form-control">
+                </div>
+
+                <div class="mb-3">
                     <label>Stock</label>
                     <input type="number"
                         id="stock"
@@ -101,15 +108,17 @@
 
 let productos = [
     {
-        nombre:'Audífonos RGB Pro',
-        precio:599,
-        stock:14,
+        nombre:'Kilo de Manzanas',
+        categoria: 'Frutas y Verduras',
+        precio:35,
+        stock:50,
         imagen:'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop'
     },
     {
-        nombre:'Mouse Gamer X7',
-        precio:399,
-        stock:3,
+        nombre:'Zanahorias',
+        categoria: 'Frutas y Verduras',
+        precio:25,
+        stock:40,
         imagen:'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=1200&auto=format&fit=crop'
     }
 ];
@@ -128,6 +137,9 @@ function mostrarProductos(lista = productos){
 
                 <div class="card-body">
                     <h5>${p.nombre}</h5>
+                    <p>
+                        Categoría: ${p.categoria}
+                    </p>
                     <p>
                         Precio: $${p.precio}
                     </p>
@@ -155,6 +167,8 @@ function guardarProducto(){
 
     let nombre =
         document.getElementById("nombre").value;
+    let categoria =
+        document.getElementById("categoria").value;
     let precio =
         document.getElementById("precio").value;
     let stock =
@@ -165,6 +179,7 @@ function guardarProducto(){
         document.getElementById("indice").value;
     if(
         nombre==="" ||
+        categoria==="" ||
         precio==="" ||
         stock==="" ||
         imagen===""){
@@ -174,6 +189,7 @@ function guardarProducto(){
 
     let producto = {
         nombre,
+        categoria,
         precio,
         stock,
         imagen
@@ -197,6 +213,7 @@ function editarProducto(i){
     let p = productos[i];
     document.getElementById("indice").value = i;
     document.getElementById("nombre").value = p.nombre;
+    document.getElementById("categoria").value = p.categoria;
     document.getElementById("precio").value = p.precio;
     document.getElementById("stock").value = p.stock;
     document.getElementById("imagen").value = p.imagen;
@@ -215,6 +232,7 @@ function eliminarProducto(i){
 function limpiarFormulario(){
     document.getElementById("indice").value = "";
     document.getElementById("nombre").value = "";
+    document.getElementById("categoria").value = "";
     document.getElementById("precio").value = "";
     document.getElementById("stock").value = "";
     document.getElementById("imagen").value = "";
