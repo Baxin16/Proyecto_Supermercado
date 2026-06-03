@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from pymongo import MongoClient
+from datetime import timedelta
 from bson.objectid import ObjectId
 from flask_mail import Mail, Message
 import random
@@ -16,13 +17,10 @@ app.config['MAIL_DEFAULT_SENDER'] = '24308060610124@cetis61.edu.mx'
 mail = Mail(app)
 
 app.secret_key = "20_cosas_que_no_sabias_de_las_empanadas"
-
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=7)
 url = "mongodb+srv://Angel17:171009Ang@clusrob1.xaujcjr.mongodb.net/?appName=ClusRob1"
-
 cliente = MongoClient(url)
-
 db = cliente["supermercado"]
-
 usuarios = db["usuarios"]
 tareas_db = db["tareas"]
 productos = db["productos"]
@@ -44,24 +42,25 @@ def index():
 
 @app.route("/login", methods=["POST"])
 def login():
-    usuario = request.form["usuario"]
+    correo = request.form["usuario"]
     contraseña = request.form["contraseña"]
-    user = usuarios.find_one({
-        "usuario": usuario,
-        "contraseña": contraseña
 
+    user = usuarios.find_one({
+        "correo": correo,
+        "contraseña": contraseña
     })
+
     if user:
-        session["usuario"] = usuario
+        session.permanent = True
+        session["usuario"] = user["nombre"]
+        session["correo"] = user["correo"]
+
         return redirect("/gestion_productos")
 
-    else:
-        return """
-            <h2>Usuario o contraseña incorrectos</h2>
-            <a href="/">
-                Volver al login
-            </a>
-        """
+    return """
+        <h2>Usuario o contraseña incorrectos</h2>
+        <a href="/">Volver al login</a>
+    """
 
 
 @app.route("/logout")
@@ -80,34 +79,34 @@ def registro():
         dia = request.form["dia"]
         mes = request.form["mes"]
         año = request.form["año"]
-        usuario = request.form["usuario"]
         genero = request.form["genero"]
         correo = request.form["correo"]
         contraseña = request.form["contraseña"]
+
         usuario_existente = usuarios.find_one({
             "correo": correo
         })
 
         if usuario_existente:
-
-            return "Ese correo ya existe"
+            return """
+                <h2>Ese correo ya está registrado</h2>
+                <a href="/registro">Volver</a>
+            """
 
         usuarios.insert_one({
-    "usuario": usuario,
-    "nombre": nombre,
-    "apellidos": apellidos,
-    "dia": dia,
-    "mes": mes,
-    "año": año,
-    "genero": genero,
-    "correo": correo,
-    "contraseña": contraseña
+            "nombre": nombre,
+            "apellidos": apellidos,
+            "dia": dia,
+            "mes": mes,
+            "año": año,
+            "genero": genero,
+            "correo": correo,
+            "contraseña": contraseña
         })
 
         return redirect("/")
 
     return render_template("registro.html")
-
 
 @app.route("/recuperar", methods=["GET", "POST"])
 def recuperar():
