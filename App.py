@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from datetime import timedelta
 from bson.objectid import ObjectId
 from flask_mail import Mail, Message
+import bcrypt
 import random
 
 app = Flask(__name__)
@@ -39,18 +40,19 @@ if productos.count_documents({"nombre": "Leche"}) == 0:
 def index():
     return render_template("login.html")
 
-
 @app.route("/login", methods=["POST"])
 def login():
     correo = request.form["usuario"]
     contraseña = request.form["contraseña"]
 
     user = usuarios.find_one({
-        "correo": correo,
-        "contraseña": contraseña
+        "correo": correo
     })
 
-    if user:
+    if user and bcrypt.checkpw(
+        contraseña.encode("utf-8"),
+        user["contraseña"].encode("utf-8")
+    ):
         session.permanent = True
         session["usuario"] = user["nombre"]
         session["correo"] = user["correo"]
@@ -62,12 +64,10 @@ def login():
         <a href="/">Volver al login</a>
     """
 
-
 @app.route("/logout")
 def logout():
     session.pop("usuario", None)
     return redirect("/")
-
 
 @app.route("/registro", methods=["GET", "POST"])
 def registro():
@@ -82,6 +82,10 @@ def registro():
         genero = request.form["genero"]
         correo = request.form["correo"]
         contraseña = request.form["contraseña"]
+        hash_contraseña = bcrypt.hashpw(
+    contraseña.encode("utf-8"),
+    bcrypt.gensalt()
+    ).decode("utf-8")
 
         usuario_existente = usuarios.find_one({
             "correo": correo
@@ -101,7 +105,7 @@ def registro():
             "año": año,
             "genero": genero,
             "correo": correo,
-            "contraseña": contraseña
+            "contraseña": hash_contraseña
         })
 
         return redirect("/")
@@ -131,63 +135,52 @@ def recuperar():
                 sender=app.config['MAIL_USERNAME'],
                 recipients=[correo]
             )
-
             mensaje.body = f"""
 Tu código de recuperación es:
-
 {codigo}
 """
-
             mail.send(mensaje)
-
             return redirect("/verificar")
-
         else:
-
+            
             return """
                 <h2>Correo no encontrado</h2>
                 <a href="/recuperar">Intentar otra vez</a>
             """
-
     return render_template("recuperar.html")
 
 @app.route("/verificar", methods=["GET", "POST"])
 def verificar():
 
     if request.method == "POST":
-
         codigo = request.form["codigo"]
-
         if codigo == session.get("codigo_recuperacion"):
-
             return redirect("/nueva_contraseña")
-
         else:
-
             return """
                 <h2>Código incorrecto</h2>
-
                 <a href="/verificar">
                     Intentar otra vez
                 </a>
             """
-
     return render_template("verificar.html")
 
 @app.route("/nueva_contraseña", methods=["GET", "POST"])
 def nueva_contraseña():
 
     if request.method == "POST":
-
         nueva_contraseña = request.form["nueva_contraseña"]
-
+        hash_nuevo = bcrypt.hashpw(
+    nueva_contraseña.encode("utf-8"),
+    bcrypt.gensalt()
+).decode("utf-8")
         usuarios.update_one(
             {
                 "correo": session["correo_recuperacion"]
             },
             {
                 "$set": {
-                    "contraseña": nueva_contraseña
+                    "contraseña": hash_nuevo
                 }
             }
         )
